@@ -1,0 +1,6 @@
+version: 0.2
+
+phases:
+    build:
+        commands:
+            - ./etc/build/scripts/test_integration.sh
