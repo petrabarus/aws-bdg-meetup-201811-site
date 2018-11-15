@@ -5,6 +5,8 @@ from wsgiref.simple_server import make_server
 
 
 # Create logger
+from mypackage.helpers import addition
+
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
@@ -22,14 +24,20 @@ handler.setFormatter(formatter)
 # add Handler to Logger
 logger.addHandler(handler)
 
+a = 1
+b = 2
+c = addition(a, b)
+
 welcome = """
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <body>
         <h1>Hello World!</h1>
+        <pre>addition({}, {}) = {}</pre>
     </body>
 </html>
-"""
+""".format(a, b, c)
+
 
 def application(environ, start_response):
     path    = environ['PATH_INFO']
